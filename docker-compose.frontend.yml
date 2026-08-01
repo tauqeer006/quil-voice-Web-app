@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  frontend:
+    build: ./frontend
+    container_name: platform_frontend
+    ports:
+      - "5173:80"
+    networks:
+      - platform_net
+
+networks:
+  platform_net:
+    external: true
