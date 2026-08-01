@@ -32,20 +32,20 @@ export default function DocumentLibrary() {
     <Layout>
       <h1>Document Library</h1>
       <div className="card">
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+        <table className="data-table">
           <thead>
-            <tr style={{ textAlign: "left" }}>
+            <tr>
               <th>Filename</th><th>Type</th><th>Status</th><th>Chunks</th><th></th>
             </tr>
           </thead>
           <tbody>
             {docs.map((d) => (
-              <tr key={d.id} style={{ borderTop: "1px solid #eee" }}>
-                <td style={{ padding: "8px 0" }}>{d.filename}</td>
+              <tr key={d.id} className="table-row">
+                <td>{d.filename}</td>
                 <td>{d.source_type}</td>
                 <td><span className={`status-badge ${STATUS_CLASS[d.status] || ""}`}>{d.status}</span></td>
                 <td>{d.num_chunks}</td>
-                <td><a onClick={() => remove(d.id)} style={{ color: "#dc2626", cursor: "pointer" }}>Delete</a></td>
+                <td><a onClick={() => remove(d.id)} className="danger-link">Delete</a></td>
               </tr>
             ))}
           </tbody>

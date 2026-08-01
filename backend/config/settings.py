@@ -57,6 +57,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": (
         "rest_framework.permissions.IsAuthenticated",
     ),
+    "UNAUTHENTICATED_USER": None,
 }
 
 JWT_SECRET = os.getenv("DJANGO_SECRET_KEY", "insecure-dev-key")

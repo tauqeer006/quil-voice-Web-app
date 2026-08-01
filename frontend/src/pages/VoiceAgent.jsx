@@ -39,11 +39,11 @@ export default function VoiceAgent() {
   return (
     <Layout>
       <h1>Voice Agent</h1>
-      <div className="card" style={{ textAlign: "center", padding: 40 }}>
+      <div className="card voice-card">
         {inCall ? (
           <>
             <div className="pulse" />
-            <button className="call-btn active" style={{ marginTop: 24 }} onClick={endCall}>End Call</button>
+            <button className="call-btn active" onClick={endCall}>End Call</button>
           </>
         ) : (
           <button className="call-btn" onClick={startCall}>Call Agent</button>
@@ -51,7 +51,7 @@ export default function VoiceAgent() {
 
         {inCall && (
           <form
-            style={{ marginTop: 24, maxWidth: 400, marginInline: "auto" }}
+            className="voice-form"
             onSubmit={(e) => {
               e.preventDefault();
               const input = e.target.elements.turn;

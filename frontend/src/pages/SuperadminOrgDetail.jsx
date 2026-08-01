@@ -17,14 +17,14 @@ export default function SuperadminOrgDetail() {
     <Layout>
       <h1>{org.name}</h1>
       <div className="grid">
-        <div className="card"><h3>Users</h3><p style={{ fontSize: 28 }}>{org.users.length}</p></div>
-        <div className="card"><h3>Documents</h3><p style={{ fontSize: 28 }}>{org.documents.length}</p></div>
-        <div className="card"><h3>Credits</h3><p style={{ fontSize: 28 }}>{org.credits_used} / {org.credits_total}</p></div>
+        <div className="card"><h3>Users</h3><p className="metric-value">{org.users.length}</p></div>
+        <div className="card"><h3>Documents</h3><p className="metric-value">{org.documents.length}</p></div>
+        <div className="card"><h3>Credits</h3><p className="metric-value">{org.credits_used} / {org.credits_total}</p></div>
       </div>
       <div className="card">
         <h3>Call history</h3>
         {org.call_history.map((c) => (
-          <div key={c.id} style={{ padding: "8px 0", borderBottom: "1px solid #eee" }}>
+          <div key={c.id} className="table-row">
             {new Date(c.started_at).toLocaleString()} — {c.credits_consumed} credits
           </div>
         ))}

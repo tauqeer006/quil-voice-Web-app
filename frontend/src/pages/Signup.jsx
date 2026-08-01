@@ -20,21 +20,23 @@ export default function Signup() {
   }
 
   return (
-    <div style={{ maxWidth: 360, margin: "80px auto" }} className="card">
-      <h2>Create your organization</h2>
-      <form onSubmit={handleSubmit}>
-        <input placeholder="Organization name" value={form.organization_name}
-          onChange={(e) => setForm({ ...form, organization_name: e.target.value })} required />
-        <input placeholder="Admin email" type="email" value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })} required />
-        <input placeholder="Password" type="password" value={form.password}
-          onChange={(e) => setForm({ ...form, password: e.target.value })} required />
-        {error && <p style={{ color: "#dc2626" }}>{error}</p>}
-        <button className="btn" type="submit" style={{ width: "100%" }}>Sign up</button>
-      </form>
-      <p style={{ marginTop: 12, fontSize: 14 }}>
-        Already have an account? <Link to="/login">Log in</Link>
-      </p>
+    <div className="auth-page">
+      <div className="auth-card">
+        <h2>Create your organization</h2>
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <input placeholder="Organization name" value={form.organization_name}
+            onChange={(e) => setForm({ ...form, organization_name: e.target.value })} required />
+          <input placeholder="Admin email" type="email" value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })} required />
+          <input placeholder="Password" type="password" value={form.password}
+            onChange={(e) => setForm({ ...form, password: e.target.value })} required />
+          {error && <p className="error-message">{error}</p>}
+          <button className="btn btn-block" type="submit">Sign up</button>
+        </form>
+        <div className="form-footer">
+          Already have an account? <Link to="/login">Log in</Link>
+        </div>
+      </div>
     </div>
   );
 }

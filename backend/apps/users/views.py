@@ -78,3 +78,5 @@ class LoginView(APIView):
 class MeView(APIView):
     def get(self, request):
         return Response(to_json_safe(request.user.doc))
+
+#mongodb+srv://tauqeerqureshi112:tauqeer1.@cluster0.zrlqujq.mongodb.net/

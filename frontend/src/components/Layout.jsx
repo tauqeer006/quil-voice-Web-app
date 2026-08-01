@@ -28,7 +28,7 @@ export default function Layout({ children, creditBalance }) {
               {item.label}
             </NavLink>
           ))}
-          <a onClick={logout} style={{ cursor: "pointer", marginTop: 24, display: "block", color: "#f87171" }}>
+          <a onClick={logout} className="logout-link">
             Log out
           </a>
         </nav>

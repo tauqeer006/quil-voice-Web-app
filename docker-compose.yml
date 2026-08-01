@@ -9,6 +9,13 @@ services:
     networks:
       - platform_net
 
+  frontend:
+    build: ./frontend
+    container_name: platform_frontend
+    ports:
+      - "5173:80"
+    networks:
+      - platform_net
+
 networks:
   platform_net:
-    external: true
