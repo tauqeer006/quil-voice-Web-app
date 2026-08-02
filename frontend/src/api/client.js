@@ -4,10 +4,10 @@ function getToken() {
   return localStorage.getItem("token");
 }
 
-export async function apiRequest(path, { method = "GET", body, isForm = false } = {}) {
+export async function apiRequest(path, { method = "GET", body, isForm = false, skipAuth = false } = {}) {
   const headers = {};
   const token = getToken();
-  if (token) headers["Authorization"] = `Bearer ${token}`;
+  if (token && !skipAuth) headers["Authorization"] = `Bearer ${token}`;
   if (!isForm) headers["Content-Type"] = "application/json";
 
   const res = await fetch(`${API_BASE_URL}${path}`, {
@@ -25,8 +25,8 @@ export async function apiRequest(path, { method = "GET", body, isForm = false } 
 }
 
 export const auth = {
-  signup: (data) => apiRequest("/auth/signup/", { method: "POST", body: data }),
-  login: (data) => apiRequest("/auth/login/", { method: "POST", body: data }),
+  signup: (data) => apiRequest("/auth/signup/", { method: "POST", body: data, skipAuth: true }),
+  login: (data) => apiRequest("/auth/login/", { method: "POST", body: data, skipAuth: true }),
   me: () => apiRequest("/auth/me/"),
 };
 

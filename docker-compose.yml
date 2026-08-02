@@ -4,6 +4,8 @@ services:
     build: ./backend
     container_name: platform_backend
     env_file: ./backend/.env
+    environment:
+      - AI_SERVICE_BASE_URL=http://host.docker.internal:8001
     ports:
       - "8000:8000"
     networks:

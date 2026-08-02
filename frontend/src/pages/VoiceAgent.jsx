@@ -9,9 +9,10 @@ export default function VoiceAgent() {
 
   async function startCall() {
     const session = await voice.openSession();
-    const wsProtocol = window.location.protocol === "https:" ? "wss" : "ws";
-    const backendHost = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api").replace(/^https?:\/\//, "").replace(/\/api$/, "");
-    const ws = new WebSocket(`${wsProtocol}://${backendHost}${session.ws_url}`);
+    const wsBase = import.meta.env.VITE_AI_WS_URL || "ws://localhost:8001";
+    const ws = new WebSocket(
+      `${wsBase}${session.ws_url}?token=${encodeURIComponent(session.token)}`
+    );
 
     ws.onmessage = (event) => {
       if (typeof event.data === "string") {
